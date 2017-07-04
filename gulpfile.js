@@ -41,7 +41,6 @@ var sources = {
 gulp.task('mini', () => {
   gulp.src('./src/assets/js/components/*.js')
   .pipe(concat("bundle.js"))
-  .pipe(uglify())
   .pipe(gulp.dest('./public/assets/js/'));
 });
 
@@ -66,14 +65,14 @@ gulp.task('materialize', ()=>{
   }).on("Error", sass.logError))
   .pipe(gulp.dest(config.dist + paths.assets + "css"));
 });
-
+/*
 gulp.task('js', ()=>{
   gulp.src(sources.rootJS)
   .pipe(browserify())
   .pipe(rename("bundle.js"))
   .pipe(gulp.dest(config.dist + paths.assets + "js"));
 });
-
+*/
 gulp.task('navbar', ()=>{
   gulp.src(sources.rootNavbar)
   .pipe(browserify())
@@ -104,12 +103,12 @@ gulp.task("sass-materialize", ["materialize"], function (done) {
   browserSync.reload();
   done();
 });
-
+/*
 gulp.task("js-watch", ["js"], function (done) {
   browserSync.reload();
   done();
 });
-
+*/
 gulp.task("navbar-watch", ["navbar"], function (done) {
   browserSync.reload();
   done();
@@ -126,6 +125,11 @@ gulp.task("board-watch", ["board"], function (done) {
 });
 
 gulp.task("html-watch", ["html"], function (done) {
+  browserSync.reload();
+  done();
+});
+
+gulp.task("mini-watch", ["mini"], function (done) {
   browserSync.reload();
   done();
 });
