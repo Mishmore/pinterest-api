@@ -1,1 +1,2 @@
-console.log('board');
+'use strict';
+

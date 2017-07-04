@@ -1,5 +1,4 @@
 'use strict';
-console.log('navbar');
 
 const Navbar = (update) => {
   const navbar = $('<nav class="navbar white"></nav>');
