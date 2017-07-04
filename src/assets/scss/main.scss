@@ -2,11 +2,6 @@ $main-light-gray: whitesmoke;
 $main-gray: dimgray;
 $medium-gray: #b5b5b5;
 
-
-%icon-hover{
-  background-color: $main-light-gray;
-}
-
 .navbar {
   height: 64px;
   padding: 0 15px;
@@ -25,7 +20,7 @@ $medium-gray: #b5b5b5;
     background-size: contain;
   }
   &__search {
-    background-color: whitesmoke;
+    background-color: $main-light-gray;
     width: 70%;
     height: 40px;
     border-radius: 4px;
@@ -67,14 +62,14 @@ $medium-gray: #b5b5b5;
     margin: 0 5px;
   }
   &__profile--hover:hover {
-    @extend %icon-hover;
+    background-color: $main-light-gray;
   }
   &__menu {
     @extend .navbar__profile;
     padding: 13px 14px;
   }
   &__menu--hover:hover {
-    @extend %icon-hover;
+    background-color: $main-light-gray;
   }
   &__messages {
     @extend .navbar__profile;
