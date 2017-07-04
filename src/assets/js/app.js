@@ -16,7 +16,7 @@ $( _ => {
 const Navbar = (update) => {
   const navbar = $('<nav class="navbar white"></nav>');
   const logo = $('<a href="" class="navbar__logo"></a>');
-  const search = $('<div class="navbar__search"></div>');
+  const search = $('<div class="navbar__search hide-on-small-only"></div>');
   const input = $('<input type="text" name="" value="" class="navbar__search__input"  placeholder="Buscar">');
   const icon = $('<span class="navbar__search__icon icon-search"></span>');
   const close = $('<span class="navbar__search__close icon-close"></span>');
