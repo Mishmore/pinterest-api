@@ -1,6 +1,7 @@
 @import "sass/materialize";
 
-body {
-  color: red;
-  background-color: blue;
+.navbar {
+  height: 64px;
+  &__logo {
+  }
 }

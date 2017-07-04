@@ -15,6 +15,7 @@ var paths = {
   sass: "scss/**/*.scss",
   mainSass: "scss/main.scss",
   mainJS: "js/app.js",
+  navbar: "components/navbar.js"
 };
 
 var sources = {
@@ -24,6 +25,7 @@ var sources = {
   js: config.source + paths.js,
   rootSass: config.source + paths.assets + paths.mainSass,
   rootJS: config.source + paths.assets + paths.mainJS,
+  rootNavbar: config.source + paths.assets + paths.navbar,
 };
 gulp.task('html', ()=>{
   gulp.src(sources.html).pipe(gulp.dest(config.dist));
@@ -45,12 +47,24 @@ gulp.task('js', ()=>{
   .pipe(gulp.dest(config.dist + paths.assets + "js"));
 });
 
+gulp.task('navbar', ()=>{
+  gulp.src(sources.rootNavbar)
+  .pipe(browserify())
+  .pipe(rename("navbar.js"))
+  .pipe(gulp.dest(config.dist + paths.assets + "components"));
+});
+
 gulp.task("sass-watch", ["sass"], function (done) {
   browserSync.reload();
   done();
 });
 
 gulp.task("js-watch", ["js"], function (done) {
+  browserSync.reload();
+  done();
+});
+
+gulp.task("navbar-watch", ["navbar"], function (done) {
   browserSync.reload();
   done();
 });
@@ -67,6 +81,7 @@ gulp.task("serve", () => {
     }
   });
   gulp.watch(sources.html, ["html-watch"]);
-  gulp.watch(sources.sass, ["sass-watch"]);
-  gulp.watch(sources.js, ["js-watch"]);
+  gulp.watch(sources.rootSass, ["sass-watch"]);
+  gulp.watch(sources.rootJS, ["js-watch"]);
+  gulp.watch(sources.rootNavbar, ["navbar-watch"]);
 });
