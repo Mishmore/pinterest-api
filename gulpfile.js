@@ -37,14 +37,14 @@ var sources = {
   rootBoard: config.source + paths.assets + paths.board,
   rootComponents: config.source + paths.assets + paths.components
 };
-/*
-gulp.task('min', () => {
+
+gulp.task('mini', () => {
   gulp.src('./src/assets/js/components/*.js')
-  .pipe(concat("todo.js"))
+  .pipe(concat("bundle.js"))
   .pipe(uglify())
-  .pipe(gulp.dest('./src/assets/js/'));
+  .pipe(gulp.dest('./public/assets/js/'));
 });
-*/
+
 gulp.task('html', ()=>{
   gulp.src(sources.html).pipe(gulp.dest(config.dist));
 });
