@@ -38,7 +38,7 @@ var sources = {
   rootComponents: config.source + paths.assets + paths.components
 };
 
-gulp.task('mini', () => {
+gulp.task('todo', () => {
   gulp.src('./src/assets/js/components/*.js')
   .pipe(concat("bundle.js"))
   .pipe(gulp.dest('./public/assets/js/'));
@@ -65,34 +65,6 @@ gulp.task('materialize', ()=>{
   }).on("Error", sass.logError))
   .pipe(gulp.dest(config.dist + paths.assets + "css"));
 });
-/*
-gulp.task('js', ()=>{
-  gulp.src(sources.rootJS)
-  .pipe(browserify())
-  .pipe(rename("bundle.js"))
-  .pipe(gulp.dest(config.dist + paths.assets + "js"));
-});
-*/
-gulp.task('navbar', ()=>{
-  gulp.src(sources.rootNavbar)
-  .pipe(browserify())
-  .pipe(rename("navbar.js"))
-  .pipe(gulp.dest(config.dist + paths.assets + "js/components"));
-});
-
-gulp.task('tags', ()=>{
-  gulp.src(sources.rootTags)
-  .pipe(browserify())
-  .pipe(rename("tags.js"))
-  .pipe(gulp.dest(config.dist + paths.assets + "js/components"));
-});
-
-gulp.task('board', ()=>{
-  gulp.src(sources.rootBoard)
-  .pipe(browserify())
-  .pipe(rename("board.js"))
-  .pipe(gulp.dest(config.dist + paths.assets + "js/components"));
-});
 
 gulp.task("sass-watch", ["sass"], function (done) {
   browserSync.reload();
@@ -103,33 +75,13 @@ gulp.task("sass-materialize", ["materialize"], function (done) {
   browserSync.reload();
   done();
 });
-/*
-gulp.task("js-watch", ["js"], function (done) {
-  browserSync.reload();
-  done();
-});
-*/
-gulp.task("navbar-watch", ["navbar"], function (done) {
-  browserSync.reload();
-  done();
-});
-
-gulp.task("tags-watch", ["tags"], function (done) {
-  browserSync.reload();
-  done();
-});
-
-gulp.task("board-watch", ["board"], function (done) {
-  browserSync.reload();
-  done();
-});
 
 gulp.task("html-watch", ["html"], function (done) {
   browserSync.reload();
   done();
 });
 
-gulp.task("mini-watch", ["mini"], function (done) {
+gulp.task("todo-watch", ["todo"], function (done) {
   browserSync.reload();
   done();
 });
@@ -143,8 +95,5 @@ gulp.task("serve", () => {
   gulp.watch(sources.html, ["html-watch"]);
   gulp.watch(sources.rootSass, ["sass-watch"]);
   gulp.watch(sources.rootMaterialize, ["materialize-watch"]);
-  gulp.watch(sources.rootJS, ["js-watch"]);
-  gulp.watch(sources.rootNavbar, ["navbar-watch"]);
-  gulp.watch(sources.rootTags, ["tags-watch"]);
-  gulp.watch(sources.rootBoard, ["board-watch"]);
+  gulp.watch('./src/assets/js/components/*.js', ["todo-watch"]);
 });

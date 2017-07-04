@@ -24,10 +24,22 @@ $( _ => {
     console.log(board.boardData);
   });
 */
+/*
+(ID de pin) data.id
+(Título) data.metadata.link.title
+(Autor) data.attribution.author_name
+(Nombre de Board) data.board.name
+*/
   $.get( "https://api.pinterest.com/v1/boards/arabelyuska/web-ui/pins/?access_token=AYneH0AVANBioiyRpgDkY8hLv8LpFM4lRp9RIINEIt-RlsA7PgAAAAA&fields=id%2Clink%2Cimage%2Cattribution%2Cboard%2Ccolor%2Ccounts%2Ccreated_at%2Cmedia%2Cmetadata%2Cnote%2Coriginal_link%2Curl")
-  .done(function( data ) {
-    board.boardData = data;
+  .done(function( response ) {
+    board.boardData = response.data;
     console.log(board.boardData);
+
+    board.boardData.forEach(function(e) {
+      if (e.attribution != null) {
+        console.log(e.attribution.author_name);
+      }
+    })
   });
 
   const root = $('.root');
@@ -37,7 +49,7 @@ $( _ => {
 
 'use strict';
 const Navbar = (update) => {
-  const parent = $('<div class="navbar-fixed"></div>');
+  const parent = $('<div class="navbar-fixed green"></div>');
   const navbar = $('<nav class="navbar white"></nav>');
   const logo = $('<a href="" class="navbar__logo"></a>');
   const search = $('<div class="navbar__search hide-on-small-only"></div>');
