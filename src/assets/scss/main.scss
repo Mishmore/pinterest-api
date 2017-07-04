@@ -3,3 +3,21 @@
   &__logo {
   }
 }
+.scroll-tags{
+  align-items: center;
+  align-content: space-around;
+  display: flex;
+  height: 7rem;
+  overflow: scroll;
+  &__tags{
+    border-radius: 8px;
+    margin: 0 8px;
+  }
+}
+
+$list-color: "#855D5C", "#5F7175","#AB576D", "#313233", "#414141", "#284051",
+              "#EC7133", "#542721", "#DACAC1", "#AFA89B", "#897B72", "#47B7D7",
+              "#859DA7", "#AAD3E3", "#E6BD3E", "#8D6E60", "#2C241C", "#B55F5F",
+              "#89D1E2", "#3C8EE8", "#D88678", "#A0A09A", "#9DACBB", "#D2C7D2"
+
+length($list-color);

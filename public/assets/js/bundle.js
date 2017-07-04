@@ -4,7 +4,7 @@
 const render = (root) => {
   root.empty();
   const wrapper = $('<div class="wrapper"></div>');
-  wrapper.append(Navbar(_ => render(root)));
+  wrapper.append(tagsGenerator());
   root.append(wrapper);
 }
 
@@ -13,5 +13,20 @@ $( _ => {
   render(root);
   console.log('renderizando');
 });
+
+const tagsGenerator = ()=>{
+  const tags = ["Inspiración","Minimalista", "Grafico", "Botones", "Fotografía", "Responsivo", "Portafolio", "Movil",
+                "Colores","Arquitectura","Corporativo","Frases", "Empresarial", "Español", "Comida", "Restaurante",
+                "Tienda", "Productos", "Wordpress", "Desing", "Template", "Flat", "2017", "Creativo"
+                ]
+  const contTag = $('<div class="row"></div>');
+  const coltag = $('<div class="col s12 scroll-tags"></div>');
+  for (var i = 0; i < tags.length; i++) {
+    const tag = $(`<div class="btn-large scroll-tags__tags">${tags[i]}</div>`);
+    coltag.append(tag);
+  }
+  contTag.append(coltag);
+  return contTag;
+}
 
 },{}]},{},[1])

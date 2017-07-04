@@ -1,1 +1,1 @@
-console.log('Tags');
+"use strict";
