@@ -15,7 +15,9 @@ var paths = {
   sass: "scss/**/*.scss",
   mainSass: "scss/main.scss",
   mainJS: "js/app.js",
-  navbar: "components/navbar.js"
+  navbar: "js/components/navbar.js",
+  tags: "js/components/tags.js",
+  board: "js/components/board.js",
 };
 
 var sources = {
@@ -26,6 +28,8 @@ var sources = {
   rootSass: config.source + paths.assets + paths.mainSass,
   rootJS: config.source + paths.assets + paths.mainJS,
   rootNavbar: config.source + paths.assets + paths.navbar,
+  rootTags: config.source + paths.assets + paths.tags,
+  rootBoard: config.source + paths.assets + paths.board,
 };
 gulp.task('html', ()=>{
   gulp.src(sources.html).pipe(gulp.dest(config.dist));
@@ -51,7 +55,21 @@ gulp.task('navbar', ()=>{
   gulp.src(sources.rootNavbar)
   .pipe(browserify())
   .pipe(rename("navbar.js"))
-  .pipe(gulp.dest(config.dist + paths.assets + "components"));
+  .pipe(gulp.dest(config.dist + paths.assets + "js/components"));
+});
+
+gulp.task('tags', ()=>{
+  gulp.src(sources.rootTags)
+  .pipe(browserify())
+  .pipe(rename("tags.js"))
+  .pipe(gulp.dest(config.dist + paths.assets + "js/components"));
+});
+
+gulp.task('board', ()=>{
+  gulp.src(sources.rootBoard)
+  .pipe(browserify())
+  .pipe(rename("board.js"))
+  .pipe(gulp.dest(config.dist + paths.assets + "js/components"));
 });
 
 gulp.task("sass-watch", ["sass"], function (done) {
@@ -65,6 +83,16 @@ gulp.task("js-watch", ["js"], function (done) {
 });
 
 gulp.task("navbar-watch", ["navbar"], function (done) {
+  browserSync.reload();
+  done();
+});
+
+gulp.task("tags-watch", ["tags"], function (done) {
+  browserSync.reload();
+  done();
+});
+
+gulp.task("board-watch", ["board"], function (done) {
   browserSync.reload();
   done();
 });
@@ -84,4 +112,6 @@ gulp.task("serve", () => {
   gulp.watch(sources.rootSass, ["sass-watch"]);
   gulp.watch(sources.rootJS, ["js-watch"]);
   gulp.watch(sources.rootNavbar, ["navbar-watch"]);
+  gulp.watch(sources.rootTags, ["tags-watch"]);
+  gulp.watch(sources.rootBoard, ["board-watch"]);
 });
