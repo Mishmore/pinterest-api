@@ -3,6 +3,8 @@ var sass = require('gulp-sass');
 var browserify = require('gulp-browserify');
 var rename = require('gulp-rename');
 var browserSync = require('browser-sync').create();
+var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
 
 var config = {
   source: './src/',
@@ -16,6 +18,7 @@ var paths = {
   mainSass: "scss/main.scss",
   materializeSass: "scss/materialize-sass.scss",
   mainJS: "js/app.js",
+  components: "js/components/*.js",
   navbar: "js/components/navbar.js",
   tags: "js/components/tags.js",
   board: "js/components/board.js",
@@ -32,7 +35,16 @@ var sources = {
   rootNavbar: config.source + paths.assets + paths.navbar,
   rootTags: config.source + paths.assets + paths.tags,
   rootBoard: config.source + paths.assets + paths.board,
+  rootComponents: config.source + paths.assets + paths.components
 };
+/*
+gulp.task('min', () => {
+  gulp.src('./src/assets/js/components/*.js')
+  .pipe(concat("todo.js"))
+  .pipe(uglify())
+  .pipe(gulp.dest('./src/assets/js/'));
+});
+*/
 gulp.task('html', ()=>{
   gulp.src(sources.html).pipe(gulp.dest(config.dist));
 });
