@@ -1,8 +1,10 @@
 $main-light-gray: whitesmoke;
 $main-gray: dimgray;
 $medium-gray: #b5b5b5;
+$brand-color: #bd081c;
 
 .navbar {
+  width: 100%;
   height: 64px;
   padding: 0 15px;
   display: flex;
@@ -10,10 +12,11 @@ $medium-gray: #b5b5b5;
   align-items: center;
   box-shadow: none;
   border-bottom: 1px $main-light-gray solid;
+  z-index: 10;
   &__logo {
     background-image: url('../img/pinterest-logo.png');
     background-repeat: no-repeat;
-    width: 30px;
+    min-width: 30px;
     height: 30px;
     margin-right: 15px;
     display: inline-block;
@@ -49,6 +52,13 @@ $medium-gray: #b5b5b5;
       font-size: 20px;
     }
   }
+  &__lupa {
+    color: $medium-gray;
+    font-size: 23px;
+  }
+  &__lupa--hover:hover {
+    background-color: $main-light-gray;
+  }
   &__profile {
     width: 50px;
     height: 50px;
@@ -77,4 +87,60 @@ $medium-gray: #b5b5b5;
     height: 35px;
     background-image: url('../img/message.png');
   }
+  &__bottom {
+    @extend .navbar;
+    z-index: 0;
+    top: 64px;
+    background-color: rgba(255, 255, 255, 0.64);
+    border-bottom: none;
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &__container {
+      width: 70%;
+      margin: 0 auto;
+      background-color: transparent;
+      @media (max-width: 700) {
+        width: 90%;
+      }
+    }
+      h5 {
+      color: $main-gray;
+      font-weight: 600;
+      font-size: 1.5rem;
+      position: absolute;
+      top: -50px;
+      transition: .3s;
+      left: 44%;
+    }
+    &__share {
+      @extend .navbar__profile;
+      padding: 12px 14px
+    }
+    &__share--hover:hover {
+      background-color: $main-light-gray;
+    }
+    &__button {
+      box-shadow: none;
+      font-weight: 600;
+      background-color: $brand-color;
+      text-transform: capitalize;
+      padding: 0 10px;
+      letter-spacing: 0;
+      border-radius: 5px;
+    }
+    &__button--hover:hover {
+      background-color: darken($brand-color, 3%) !important;
+      box-shadow: none;
+    }
+  }
+}
+.btn {
+  transition: 0s;
+}
+.prueba {
+  width: 100%;
+  height: 1000px;
+  background-color: orange;
 }
