@@ -1,8 +1,5 @@
 'use strict';
-<<<<<<< HEAD
 
-=======
->>>>>>> 6b27aa663efb9e5ddc1a2dd1704648ecf140d8fc
 const Navbar = (update) => {
   const parent = $('<div class="navbar-fixed"></div>');
   const navbar = $('<nav class="navbar white"></nav>');
