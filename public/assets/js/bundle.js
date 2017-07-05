@@ -11,10 +11,6 @@ const render = (root) => {
 const hola = 'ada';
 const board = {
   boardData: null,
-  img: null,
-  title: null,
-  author: null,
-  pinId: null
 }
 
 $( _ => {
