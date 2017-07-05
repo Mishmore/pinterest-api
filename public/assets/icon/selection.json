@@ -1,0 +1,133 @@
+{
+  "IcoMoonType": "selection",
+  "icons": [
+    {
+      "icon": {
+        "paths": [
+          "M960 448c-35.376 0-64 28.656-64 64v384h-768v-384c0-35.344-28.624-64-64-64s-64 28.656-64 64v448c0 35.344 28.624 64 64 64h896c35.376 0 64-28.656 64-64v-448c0-35.344-28.624-64-64-64zM448 640c0 35.344 28.624 64 64 64s64-28.656 64-64v-384h192l-256-256-256 256h192v384z"
+        ],
+        "attrs": [
+          {}
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "tags": [
+          "out",
+          "upload",
+          "load",
+          "outbox"
+        ],
+        "grid": 16
+      },
+      "attrs": [
+        {}
+      ],
+      "properties": {
+        "order": 1,
+        "id": 0,
+        "prevSize": 16,
+        "code": 59652,
+        "name": "out"
+      },
+      "setIdx": 0,
+      "setId": 11,
+      "iconIdx": 0
+    },
+    {
+      "icon": {
+        "paths": [
+          "M502.208 433.312l85.312 85.28 160.512-160.544 82.88 82.88 0.128-247.488-249.12-1.472 80.832 80.8-160.544 160.544zM829.632 542.24l-61.44-62.304 1.12 288.224-512.48 0.288 0.512-511.136 286.656-1.28-64-64h-224c-35.328 0-64 28.672-64 64v512c0 35.328 28.672 64 64 64h512c35.328 0 64-28.672 64-64l-2.368-225.792z"
+        ],
+        "attrs": [
+          {}
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "tags": [
+          "pop out",
+          "pop up",
+          "out"
+        ],
+        "grid": 32
+      },
+      "attrs": [
+        {}
+      ],
+      "properties": {
+        "order": 1,
+        "id": 2,
+        "prevSize": 32,
+        "code": 59651,
+        "name": "popout"
+      },
+      "setIdx": 9,
+      "setId": 2,
+      "iconIdx": 0
+    },
+    {
+      "icon": {
+        "paths": [
+          "M656 480h-288c-35.328 0-64 28.672-64 64s28.672 64 64 64h288c35.328 0 64-28.672 64-64s-28.672-64-64-64zM434.656 256l-34.656 192h224l-34.688-192h-154.656zM512 928l48-288h-96l48 288zM416 224h192c26.496 0 48-21.504 48-48s-21.504-48-48-48h-192c-26.528 0-48 21.504-48 48s21.472 48 48 48z"
+        ],
+        "attrs": [
+          {}
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "tags": [
+          "pin",
+          "location",
+          "map marker",
+          "marker"
+        ],
+        "grid": 32
+      },
+      "attrs": [
+        {}
+      ],
+      "properties": {
+        "order": 1,
+        "id": 1,
+        "prevSize": 32,
+        "code": 59648,
+        "name": "pin"
+      },
+      "setIdx": 9,
+      "setId": 2,
+      "iconIdx": 1
+    }
+  ],
+  "height": 1024,
+  "metadata": {
+    "name": "icomoon"
+  },
+  "preferences": {
+    "showGlyphs": true,
+    "showQuickUse": true,
+    "showQuickUse2": true,
+    "showSVGs": true,
+    "fontPref": {
+      "prefix": "icon-",
+      "metadata": {
+        "fontFamily": "icomoon"
+      },
+      "metrics": {
+        "emSize": 1024,
+        "baseline": 6.25,
+        "whitespace": 50
+      },
+      "embed": false
+    },
+    "imagePref": {
+      "prefix": "icon-",
+      "png": true,
+      "useClassSelector": true,
+      "color": 0,
+      "bgColor": 16777215,
+      "classSelector": ".icon"
+    },
+    "historySize": 50,
+    "showCodes": true,
+    "gridSize": 16
+  }
+}
