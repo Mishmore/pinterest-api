@@ -56,6 +56,9 @@ $dark-grey: #555555;
   &__lupa {
     color: $medium-gray;
     font-size: 23px;
+    width: 50px;
+    height: 50px;
+    padding: 13px 13px;
   }
   &__lupa--hover:hover {
     background-color: $main-light-gray;
