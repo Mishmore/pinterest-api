@@ -9,15 +9,24 @@
   display: flex;
   height: 7rem;
   overflow: scroll;
+  overflow-y: hidden;
   &__tags{
     border-radius: 8px;
     margin: 0 8px;
   }
 }
+.tagScroll{
+  padding: 0 4em;
+}
 
-$list-color: "#855D5C", "#5F7175","#AB576D", "#313233", "#414141", "#284051",
-              "#EC7133", "#542721", "#DACAC1", "#AFA89B", "#897B72", "#47B7D7",
-              "#859DA7", "#AAD3E3", "#E6BD3E", "#8D6E60", "#2C241C", "#B55F5F",
-              "#89D1E2", "#3C8EE8", "#D88678", "#A0A09A", "#9DACBB", "#D2C7D2"
+$listColors: (0:"#855D5C", 1:"#5F7175", 2:"#AB576D", 3:"#313233", 4:"#414141", 5:"#284051",
+              6:"#EC7133", 7:"#542721", 8:"#DACAC1", 9:"#AFA89B", 10:"#897B72", 11:"#47B7D7",
+              12:"#859DA7",13:"#AAD3E3", 14:"#E6BD3E", 15:"#8D6E60", 16:"#2C241C", 17:"#B55F5F",
+              18:"#89D1E2", 19:"#3C8EE8", 20:"#D88678", 21:"#A0A09A", 22:"#9DACBB", 23:"#D2C7D2");
 
-length($list-color);
+
+@each $animal, $value in $listColors {
+  .scroll-tags-#{$animal}{
+    background-color: #{$value};
+  }
+}
