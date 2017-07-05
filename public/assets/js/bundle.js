@@ -1,11 +1,34 @@
 console.log('board');
 
+const Header = () => {
+  const parent = $('<header class="container"></header>');
+  const header = $('<div class="header"></div>');
+  const col = $('<div class="col m12"></div>');
+  const boardTitle = $('<h3>Web UI</h3>');
+  const col2 = $('<div class="col m12"></div>');
+  const cifras = $('<div></div>');
+  const pines = $('<strong>30</strong><span>Pines</span><br>');
+  const followers = $('<strong>84</strong><span>Seguidores</span>');
+  const user = $('<img src="" alt="">');
+
+  parent.append(header);
+  header.append(col);
+  col.append(boardTitle);
+  header.append(col2);
+  col2.append(cifras);
+  cifras.append(pines);
+  cifras.append(followers);
+  col2.append(user);
+
+  return parent;
+}
+
 'use strict';
 const render = (root) => {
   root.empty();
   const wrapper = $('<div class="wrapper"></div>');
   wrapper.append(Navbar(_ => render(root)));
-  wrapper.append(Prueba(_ => render(root)));
+  wrapper.append(Header(_ => render(root)));
   root.append(wrapper);
 }
 
@@ -58,7 +81,7 @@ const Navbar = (update) => {
   const menu = $('<a href="" class="navbar__menu navbar__menu--hover icon-menu"></a>');
   const messages = $('<a href="" class="navbar__messages"></a>');
   const navBottom = $('<nav class="navbar__bottom hide-on-small-only"></nav>');
-  const navBotCont = $('<div class="navbar__bottom __container transparent"></div>');
+  const navBotCont = $('<div class="navbar__bottom__container transparent"></div>');
   const share = $('<a href="" class="navbar__bottom__share navbar__bottom__share--hover icon-share"></a>');
   const title = $('<h5 class="center-align">Web UI</h5>');
   const button = $('<button type="button" name="button" class="navbar__bottom__button navbar__bottom__button--hover btn">Seguir tablero</button>');
@@ -93,11 +116,6 @@ const Navbar = (update) => {
     lastScroll = currScroll;
   });
   return parent;
-}
-
-const Prueba = () => {
-  const padre = $('<div class="prueba"></div>');
-  return padre;
 }
 
 console.log('Tags');

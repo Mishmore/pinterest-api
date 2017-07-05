@@ -12,7 +12,7 @@ const Navbar = (update) => {
   const menu = $('<a href="" class="navbar__menu navbar__menu--hover icon-menu"></a>');
   const messages = $('<a href="" class="navbar__messages"></a>');
   const navBottom = $('<nav class="navbar__bottom hide-on-small-only"></nav>');
-  const navBotCont = $('<div class="navbar__bottom __container transparent"></div>');
+  const navBotCont = $('<div class="navbar__bottom__container transparent"></div>');
   const share = $('<a href="" class="navbar__bottom__share navbar__bottom__share--hover icon-share"></a>');
   const title = $('<h5 class="center-align">Web UI</h5>');
   const button = $('<button type="button" name="button" class="navbar__bottom__button navbar__bottom__button--hover btn">Seguir tablero</button>');

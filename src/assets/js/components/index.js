@@ -3,7 +3,7 @@ const render = (root) => {
   root.empty();
   const wrapper = $('<div class="wrapper"></div>');
   wrapper.append(Navbar(_ => render(root)));
-  wrapper.append(Prueba(_ => render(root)));
+  wrapper.append(Header(_ => render(root)));
   root.append(wrapper);
 }
 
