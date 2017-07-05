@@ -1,5 +1,80 @@
+$main-light-gray: whitesmoke;
+$main-gray: dimgray;
+$medium-gray: #b5b5b5;
+
 .navbar {
   height: 64px;
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: none;
+  border-bottom: 1px $main-light-gray solid;
   &__logo {
+    background-image: url('../img/pinterest-logo.png');
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+    display: inline-block;
+    background-size: contain;
+  }
+  &__search {
+    background-color: $main-light-gray;
+    width: 70%;
+    height: 40px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    padding: 0 13px;
+
+    input[type="text"] {
+      background-color: transparent;
+      border: none;
+      margin: 0;
+      margin-left: 16px;
+      color: dimgray;
+      font-weight: 600;
+    }
+    input[type=text]:focus:not([readonly]) {
+      border-bottom: none;
+      box-shadow: none;
+    }
+    &__icon {
+      color: $medium-gray;
+      font-size: 23px;
+    }
+    &__close {
+      color: $medium-gray;
+      font-size: 20px;
+    }
+  }
+  &__profile {
+    width: 50px;
+    height: 50px;
+    color: $medium-gray;
+    font-size: 23px;
+    display: inline-block;
+    background-size: contain;
+    border-radius: 80px;
+    border-radius: 73px;
+    padding: 13px 16px;
+    margin: 0 5px;
+  }
+  &__profile--hover:hover {
+    background-color: $main-light-gray;
+  }
+  &__menu {
+    @extend .navbar__profile;
+    padding: 13px 14px;
+  }
+  &__menu--hover:hover {
+    background-color: $main-light-gray;
+  }
+  &__messages {
+    @extend .navbar__profile;
+    width: 35px;
+    height: 35px;
+    background-image: url('../img/message.png');
   }
 }
