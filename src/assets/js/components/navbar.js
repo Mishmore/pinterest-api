@@ -1,6 +1,6 @@
 'use strict';
 const Navbar = (update) => {
-  const parent = $('<div class="navbar-fixed green"></div>');
+  const parent = $('<div class="navbar-fixed"></div>');
   const navbar = $('<nav class="navbar white"></nav>');
   const logo = $('<a href="" class="navbar__logo"></a>');
   const search = $('<div class="navbar__search hide-on-small-only"></div>');
