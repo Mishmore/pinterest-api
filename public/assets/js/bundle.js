@@ -78,7 +78,56 @@ const Header = () => {
   return parent;
 }
 
-console.log('board');
+'use strict';
+
+const boardPins=(update)=>{
+    const contenedor  =$('<div class="grid"></div>');
+    const row         =$('<div class="row"></div>');
+
+    const item=generatorItems(board.boardData,row,update);
+    console.log(item);
+
+    row.append(item);
+    contenedor.append(row);
+
+    return contenedor;
+}
+
+const items=(e)=>{
+
+    const pin         =$('<div class="col s12 m3"></div>');
+    const div         =$('<div class="radius"></div>');
+    const img         =$('<img class="responsive-img" src="'+e.image.original.url+'">');
+    const description =$('<p>'+e.note+'</p>');
+    const nameBoard   =$('<p>'+e.board.name+'</p>');
+    const overlay     =$('<div class="overlay"></div>');
+    const divIcon     =$('<div class="icon-div btn white"></div>');
+    const up          =$('<span class="icon-out"></span>');
+    const btn         =$('<a class="waves-effect waves-light btn boton">Guardar</a>');
+
+    //img.css("height",e.image.original.height+"px");
+    divIcon.append(up);
+    overlay.append(divIcon);
+    overlay.append(btn);
+    div.append(img);
+    pin.append(div);
+    if(e.metadata.article!=undefined) {
+        const titulo = $('<h6>' + e.metadata.article.name + '</h6>');
+        pin.append(titulo);
+    }
+    pin.append(description);
+    pin.append(overlay);
+    pin.append(nameBoard);
+
+    return pin;
+}
+
+const generatorItems=(data,row,update)=>{
+
+    data.forEach((e)=>{
+        row.append(items(e));
+    })
+}
 
 const Modal = () => {
   const modal = $('<div id="modal1" class="modal">');
@@ -104,6 +153,7 @@ const render = (root) => {
   const wrapper = $('<div class="wrapper"></div>');
   wrapper.append(Navbar(_ => render(root)));
   wrapper.append(Header(_ => render(root)));
+   wrapper.append(boardPins(_ => render(root)));
   wrapper.append(Modal(_ => render(root)));
   root.append(wrapper);
 }
@@ -119,32 +169,25 @@ const profile = {
   followers: null
 }
 $( _ => {
-  $.get( "https://api.pinterest.com/v1/boards/arabelyuska/web-ui/pins/?access_token=AYneH0AVANBioiyRpgDkY8hLv8LpFM4lRp9RIINEIt-RlsA7PgAAAAA&fields=id%2Clink%2Cimage%2Cattribution%2Cboard%2Ccolor%2Ccounts%2Ccreated_at%2Cmedia%2Cmetadata%2Cnote%2Coriginal_link%2Curl")
-  .done(function( response ) {
-    board.boardData = response.data;
-    board.boardData.forEach(function(e) {
-      if (e.attribution != null) {
-        console.log(e.attribution.author_name);
-      }
-    })
-  });
-
   $.get('https://api.pinterest.com/v1/users/arabelyuska/?access_token=AdYPEVg00YQcQqsem5eglmzv-LRYFM6ZHmEFGwZEIt-RlsA7PgAAAAA&fields=first_name%2Cid%2Clast_name%2Curl%2Cbio%2Cusername%2Caccount_type%2Ccounts%2Ccreated_at%2Cimage')
   .done(function(response) {
     profile.userData = response.data;
     profile.name = profile.userData.first_name;
     profile.image = profile.userData.image["60x60"].url;
-    
+
     $.get('https://api.pinterest.com/v1/boards/arabelyuska/web-ui/?access_token=AdYPEVg00YQcQqsem5eglmzv-LRYFM6ZHmEFGwZEIt-RlsA7PgAAAAA&fields=id%2Cname%2Curl%2Ccounts%2Ccreated_at%2Ccreator%2Cimage')
     .done(function(response) {
       profile.board_name = response.data.name;
       profile.pins = response.data.counts.pins;
       profile.followers = response.data.counts.followers;
 
-      const root = $('.root');
-      render(root);
+      $.get( "https://api.pinterest.com/v1/boards/arabelyuska/web-ui/pins/?access_token=AYneH0AVANBioiyRpgDkY8hLv8LpFM4lRp9RIINEIt-RlsA7PgAAAAA&fields=id%2Clink%2Cimage%2Cattribution%2Cboard%2Ccolor%2Ccounts%2Ccreated_at%2Cmedia%2Cmetadata%2Cnote%2Coriginal_link%2Curl")
+        .done(function( response ) {
+          board.boardData = response.data;
+            const root = $('.root');
+            render(root);
+            console.log('renderizando');
+        });
     })
   });
-
-
 });
