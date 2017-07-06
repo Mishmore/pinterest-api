@@ -4,6 +4,7 @@ const render = (root) => {
   const wrapper = $('<div class="wrapper"></div>');
   wrapper.append(Navbar(_ => render(root)));
   wrapper.append(Header(_ => render(root)));
+  wrapper.append(Modal(_ => render(root)));
   root.append(wrapper);
 }
 
@@ -27,5 +28,4 @@ $( _ => {
   const root = $('.root');
   render(root);
   console.log('renderizando');
-  $('.modal').modal();
 });

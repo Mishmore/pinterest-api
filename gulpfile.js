@@ -20,11 +20,6 @@ var paths = {
   sass: "scss/**/*.scss",
   mainSass: "scss/main.scss",
   materializeSass: "scss/materialize-sass.scss",
-  mainJS: "js/app.js",
-  components: "js/components/*.js",
-  navbar: "js/components/navbar.js",
-  tags: "js/components/tags.js",
-  board: "js/components/board.js",
   componentsFolder: "./src/assets/js/components/"
 };
 
@@ -37,10 +32,6 @@ var sources = {
   js: config.source + paths.js,
   rootSass: config.source + paths.assets + paths.mainSass,
   rootMaterialize: config.source + paths.assets + paths.materializeSass,
-  rootJS: config.source + paths.assets + paths.mainJS,
-  rootNavbar: config.source + paths.assets + paths.navbar,
-  rootTags: config.source + paths.assets + paths.tags,
-  rootBoard: config.source + paths.assets + paths.board,
   rootComponents: config.source + paths.assets + paths.components
 };
 
@@ -51,14 +42,13 @@ gulp.task('todo', () => {
   .pipe(gulp.dest('./public/assets/js/'));
 });
 
-gulp.task('img', ()=>{
-  gulp.src(sources.img).pipe(gulp.dest(config.dist + "/img"));
+gulp.task('html', ()=>{
+  gulp.src(sources.html).pipe(gulp.dest(config.dist));
 });
 
 gulp.task('materialize-js', ()=>{
   gulp.src(sources.materializeJs).pipe(gulp.dest(config.dist + paths.assets + "js"));
 });
-
 
 gulp.task('img', ()=>{
   gulp.src(sources.img).pipe(gulp.dest(config.dist + paths.assets + "img"));
@@ -96,12 +86,12 @@ gulp.task("html-watch", ["html"], function (done) {
   browserSync.reload();
   done();
 });
-/*
+
 gulp.task("img-watch", ["img"], function (done) {
   browserSync.reload();
   done();
 });
-*/
+
 gulp.task("todo-watch", ["todo"], function (done) {
   browserSync.reload();
   done();
@@ -114,6 +104,7 @@ gulp.task("serve", () => {
     }
   });
   gulp.watch(sources.html, ["html-watch"]);
+  gulp.watch(sources.img, ["img-watch"]);
   gulp.watch(sources.rootSass, ["sass-watch"]);
   gulp.watch(sources.rootMaterialize, ["materialize-watch"]);
   gulp.watch('./src/assets/js/components/*.js', ["todo-watch"]);
