@@ -144,6 +144,7 @@ const items=(e)=>{
           $('.modal-content__link').attr('href', pins.fuente.link);
         }
           $('#modal1').modal();
+          
 
 });
     return pin;
@@ -163,15 +164,15 @@ const Modal = () => {
   const topDiv = $('<div class="modal-content__top-div"></div>');
   const icons = $('<span class="modal-content__icons"></span>');
   const share = $('<a href="" class="modal-content__share modal-content__share--hover icon-share"></a>');
-  /*
-  const check =
-  */
+  const check = $('<a href="" class="modal-content__check modal-content__check--hover icon-check"></a>');
   const more = $('<a href="" class="modal-content__more"></a>');
   const saveBtn = $('<button type="button" name="button" class="modal-content__button modal-content__button--hover btn">Guardar</button>');
   const img = $('<img class="responsive-img modal-content__img" src="'+ pins.image + '">');
   const bottomImg = $('<div class="modal-content__bottom"></div>');
   const autoria = $('<div class="modal-content__autoria"></div>');
-  const author = $('<p>Artículo de </p><br><p class="modal-content__author strong"</p>');
+  const autorCont = $('<div class="modal-content__autoria__container"></div>');
+  const articulo = $('<p>Artículo de</p>');
+  const author = $('<p class="modal-content__author strong"</p>');
   const favicon = $('<img class="modal-content__favicon circle" src="">');
   const link = $('<a class="modal-content__link">Leerlo</a>');
   const description = $('<p class="modal-content__description"></p>');
@@ -182,12 +183,14 @@ const Modal = () => {
   const guardado = $('<span> lo ha guardado en </span>');
   const boardName =$('<span class="modal-content__datos__board strong">'+ profile.board_name +'</span>');
   const notes = $('<p class="modal-content__datos__notes"></p>');
+  const comentarios = $('<h5 class="modal-content__comentarios strong">Comentarios</h5>');
   const close = $('<a href="#!" class="modal-action modal-close modal-content__close icon-close"></a>');
 
   modal.append(modalContent);
   modalContent.append(topDiv);
   topDiv.append(icons);
   icons.append(share);
+  icons.append(check);
   icons.append(more);
   topDiv.append(saveBtn);
   modalContent.append(title);
@@ -195,7 +198,9 @@ const Modal = () => {
   modalContent.append(bottomImg);
   bottomImg.append(autoria);
   autoria.append(favicon);
-  autoria.append(author);
+  autoria.append(autorCont);
+  autorCont.append(articulo);
+  autorCont.append(author);
   bottomImg.append(link);
   modalContent.append(description);
   modalContent.append(datos);
@@ -205,9 +210,39 @@ const Modal = () => {
   div.append(guardado);
   div.append(boardName);
   div.append(notes);
+  modalContent.append(comentarios);
   modal.append(close);
 
+  const clean = () => {
+    $('.modal-content__img').attr('src', "");
+    $('.modal-content__datos__notes').text("");
+    $('.modal-content__title').text("");
+    $('.modal-content__description').text("");
+    $('.modal-content__author').text("");
+    $('.modal-content__favicon').attr('src', "");
+    $('.modal-content__link').attr('href', "");
+    let pins = {
+      selected: null,
+      id: null,
+      creator: null,
+      title: null,
+      description: null,
+      note: null,
+      fuente: {
+        author: null,
+        favicon: null,
+        link: null
+      }
+    }
+
+  }
+
   close.on('click', (e) => {
+    clean();
+  });
+
+  $('#materialize-modal-overlay-5').on('click', (e) => {
+    alert('sdfds');
   })
 
   return modal;
@@ -223,6 +258,9 @@ const render = (root) => {
   wrapper.append(Modal(_ => render(root)));
   root.append(wrapper);
 }
+
+const token = 'AdYPEVg00YQcQqsem5eglmzv-LRYFM6ZHmEFGwZEIt-RlsA7PgAAAAA';
+
 const board = {
   boardData: null
 }
@@ -235,7 +273,7 @@ const profile = {
   followers: null
 }
 
-const pins = {
+let pins = {
     selected: null,
     id: null,
     creator: null,
@@ -250,19 +288,19 @@ const pins = {
 }
 
 $( _ => {
-  $.get('https://api.pinterest.com/v1/users/arabelyuska/?access_token=AdYPEVg00YQcQqsem5eglmzv-LRYFM6ZHmEFGwZEIt-RlsA7PgAAAAA&fields=first_name%2Cid%2Clast_name%2Curl%2Cbio%2Cusername%2Caccount_type%2Ccounts%2Ccreated_at%2Cimage')
+  $.get('https://api.pinterest.com/v1/users/arabelyuska/?access_token='+ token +'&fields=first_name%2Cid%2Clast_name%2Curl%2Cbio%2Cusername%2Caccount_type%2Ccounts%2Ccreated_at%2Cimage')
   .done(function(response) {
     profile.userData = response.data;
     profile.name = profile.userData.first_name;
     profile.image = profile.userData.image["60x60"].url;
 
-    $.get('https://api.pinterest.com/v1/boards/arabelyuska/web-ui/?access_token=AdYPEVg00YQcQqsem5eglmzv-LRYFM6ZHmEFGwZEIt-RlsA7PgAAAAA&fields=id%2Cname%2Curl%2Ccounts%2Ccreated_at%2Ccreator%2Cimage')
+    $.get('https://api.pinterest.com/v1/boards/arabelyuska/web-ui/?access_token='+ token +'&fields=id%2Cname%2Curl%2Ccounts%2Ccreated_at%2Ccreator%2Cimage')
     .done(function(response) {
       profile.board_name = response.data.name;
       profile.pins = response.data.counts.pins;
       profile.followers = response.data.counts.followers;
 
-      $.get( "https://api.pinterest.com/v1/boards/arabelyuska/web-ui/pins/?access_token=AYneH0AVANBioiyRpgDkY8hLv8LpFM4lRp9RIINEIt-RlsA7PgAAAAA&fields=id%2Clink%2Cimage%2Cattribution%2Cboard%2Ccolor%2Ccounts%2Ccreated_at%2Cmedia%2Cmetadata%2Cnote%2Coriginal_link%2Curl")
+      $.get( "https://api.pinterest.com/v1/boards/arabelyuska/web-ui/pins/?access_token="+ token +"&fields=id%2Clink%2Cimage%2Cattribution%2Cboard%2Ccolor%2Ccounts%2Ccreated_at%2Cmedia%2Cmetadata%2Cnote%2Coriginal_link%2Curl")
         .done(function( response ) {
           board.boardData = response.data;
             const root = $('.root');

@@ -65,6 +65,7 @@ const items=(e)=>{
           $('.modal-content__link').attr('href', pins.fuente.link);
         }
           $('#modal1').modal();
+          
 
 });
     return pin;

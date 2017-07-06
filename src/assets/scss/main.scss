@@ -245,10 +245,12 @@ body {
   box-shadow: none;
   border-radius: 8px !important;
   width: 628px;
+  color: $dark-grey;
 }
 .modal-content {
   border-radius: 8px !important;
   background-color: #ffffff;
+  padding: 30px;
   &__close {
     color: $medium-gray;
     font-size: 20px;
@@ -262,7 +264,8 @@ body {
     justify-content: space-between;
   }
   &__icons {
-    display: inline-block;
+    display: flex;
+    align-items: center;
   }
   &__more {
     @extend .navbar__messages;
@@ -272,6 +275,12 @@ body {
     @extend .navbar__bottom__share;
   }
   &__share--hover:hover {
+    background-color: $main-light-gray;
+  }
+  &__check {
+    @extend .navbar__bottom__share;
+  }
+  &__check--hover:hover {
     background-color: $main-light-gray;
   }
   &__button {
@@ -292,20 +301,23 @@ body {
   &__favicon {
     width: 40px;
     height: 40px;
-    margin-right: 5px;
+    margin-right: 10px;
   }
   &__autoria {
     width: 200px;
     display: flex;
     align-items: center;
     font-size: .9rem;
+    p {
+      margin: -4px 0;
+    }
   }
   &__link {
     @extend .navbar__bottom__button;
     display: inline-block;
     background-color: $modal-grey;
     padding: 5px 10px;
-    color: $dark-grey;
+    color: $main-gray;
   }
   &__bottom {
     display: flex;
@@ -316,22 +328,32 @@ body {
   &__description {
     letter-spacing: -0.6px;
     font-size: 1.35rem;
-    margin: 3px 0;
-    border-bottom: 1px solid $modal-grey;
+    margin: 0;
+    border-bottom: 1px solid #eee;
+    padding: 0 14px 14px 14px;
+    color: $main-gray;
+    line-height: 1.1;
   }
   &__datos {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    font-size: 1.2rem;
+    font-size: 1.13rem;
     letter-spacing: -0.3px;
     font-weight: 200;
     width: 80%;
+    border-bottom: 1px solid #eee;
+    padding: 14px;
+    line-height: 19px;
     &__profile {
       @extend .modal-content__favicon;
+      margin-right: 8px;
     }
     &__notes {
       margin: 0;
     }
+  }
+  &__comentarios {
+    font-size: 1.3rem;
   }
 }
