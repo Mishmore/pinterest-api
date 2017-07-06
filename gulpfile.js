@@ -107,5 +107,5 @@ gulp.task("serve", () => {
   gulp.watch(sources.img, ["img-watch"]);
   gulp.watch(sources.rootSass, ["sass-watch"]);
   gulp.watch(sources.rootMaterialize, ["materialize-watch"]);
-  gulp.watch('./src/assets/js/components/*.js', ["todo-watch"]);
+  gulp.watch(['./src/assets/js/components/*.js', sources.js+'index.js'], ["todo-watch"]);
 });
