@@ -228,5 +228,6 @@ $dark-grey: #555555;
 }
 
 .modal-overlay {
-  background-color: $medium-gray;
+  background-color: $main-light-gray;
+  opacity: 1 !important;
 }

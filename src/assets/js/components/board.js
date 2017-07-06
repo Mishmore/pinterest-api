@@ -34,6 +34,7 @@ const items=(e)=>{
         const titulo = $('<h6>' + e.metadata.article.name + '</h6>');
         pin.append(titulo);
     }
+
     pin.append(description);
     pin.append(overlay);
     pin.append(nameBoard);
@@ -41,18 +42,21 @@ const items=(e)=>{
 //Abrir modal y almacenar data
     overlay.on('click',(event) => {
         event.preventDefault();
+        pins.selected = e;
+        console.log(pins.selected);
         pins.id = e.id;
 
         $.get('https://api.pinterest.com/v1/pins/'+ pins.id +'/?access_token=AZfXkRQCZFONB6C_L-FTMYOrNkI0FM6hzadQ7gVEIt-RlsA7PgAAAAA&fields=id%2Clink%2Cnote%2Curl%2Cattribution%2Cmedia%2Cmetadata%2Cboard%2Ccolor%2Ccounts%2Coriginal_link%2Ccreated_at%2Ccreator%2Cimage')
         .done(function(response) {
           pins.pin = response.data;
           pins.creator = pins.pin.creator.first_name;
+          pins.title = pins.pin.metadata.article.name;
           pins.description = pins.pin.metadata.article.description;
           pins.fuente.author = pins.pin.metadata.link.site_name;
           pins.fuente.favicon = pins.pin.metadata.link.favicon;
           pins.fuente.link = pins.pin.link;
-          console.log(pins);
-          $('#description').text(pins.description);
+
+          $('#title').text(pins.title);
           $('#modal1').modal();
         });
 });

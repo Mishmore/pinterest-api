@@ -113,6 +113,7 @@ const items=(e)=>{
         const titulo = $('<h6>' + e.metadata.article.name + '</h6>');
         pin.append(titulo);
     }
+
     pin.append(description);
     pin.append(overlay);
     pin.append(nameBoard);
@@ -120,18 +121,21 @@ const items=(e)=>{
 //Abrir modal y almacenar data
     overlay.on('click',(event) => {
         event.preventDefault();
+        pins.selected = e;
+        console.log(pins.selected);
         pins.id = e.id;
 
         $.get('https://api.pinterest.com/v1/pins/'+ pins.id +'/?access_token=AZfXkRQCZFONB6C_L-FTMYOrNkI0FM6hzadQ7gVEIt-RlsA7PgAAAAA&fields=id%2Clink%2Cnote%2Curl%2Cattribution%2Cmedia%2Cmetadata%2Cboard%2Ccolor%2Ccounts%2Coriginal_link%2Ccreated_at%2Ccreator%2Cimage')
         .done(function(response) {
           pins.pin = response.data;
           pins.creator = pins.pin.creator.first_name;
+          pins.title = pins.pin.metadata.article.name;
           pins.description = pins.pin.metadata.article.description;
           pins.fuente.author = pins.pin.metadata.link.site_name;
           pins.fuente.favicon = pins.pin.metadata.link.favicon;
           pins.fuente.link = pins.pin.link;
-          console.log(pins);
-          $('#description').text(pins.description);
+
+          $('#title').text(pins.title);
           $('#modal1').modal();
         });
 });
@@ -148,46 +152,29 @@ const generatorItems=(data,row,update)=>{
 const Modal = () => {
   const modal = $('<div id="modal1" class="modal">');
   const modalContent = $('<div class="modal-content">');
-  const title = $('<h4 id="description"></h4>');
+  /*
+  const share =
+  const check =
+  const more =
+  const saveBtn =
+  const img =
+  const author =
+  const favicon =
+  const link =
+  */
+  const title = $('<h4 id="title"></h4>');
   const close = $('<a href="#!" class="modal-action modal-close btn-flat">close</a>');
 
   modal.append(modalContent);
   modalContent.append(title);
   modal.append(close);
 
+  close.on('click', (e) => {
+
+  })
+
   return modal;
 }
-/*
-overlay.on('click',(event) => {
-    event.preventDefault();
-    state.selectedPokemon = number;
-
-    imagen del pin:
-    pin.data.image.original.url
-Tamaño:
-    pin.data.image.original.width
-    pin.data.image.original.height
-
-comentario del pin:
-    pin.data.note
-titulo del pin:
-    pin.data.metadata.article.name
-descripcion del pin:    pin.data.metadata.article.description
-nombre del creador:
-    pin.data.creator.first_name
-nombre del board:
-    pin.data.board.name
-
-
-Ifo de Origen externos:
-
-logo del enlace:
-    pin.data.metadata.link.favicon
-nombre del enlace:
-    pin.data.metadata.link.site_name
-Link de LEER:
-    pin.data.link
-*/
 
 'use strict';
 const render = (root) => {
@@ -212,9 +199,11 @@ const profile = {
 }
 
 const pins = {
+    selected: null,
     pin: null,
     id: null,
     creator: null,
+    title: null,
     description: null,
     fuente: {
         author: null,
