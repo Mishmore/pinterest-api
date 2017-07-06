@@ -10,3 +10,8 @@ const Modal = () => {
 
   return modal.modal();
 }
+/*
+overlay.on('click',(event) => {
+    event.preventDefault();
+    state.selectedPokemon = number;
+*/

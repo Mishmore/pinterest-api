@@ -77,17 +77,12 @@ gulp.task("sass-watch", ["sass"], function (done) {
   done();
 });
 
-gulp.task("sass-materialize", ["materialize"], function (done) {
+gulp.task("materialize-watch", ["materialize"], function (done) {
   browserSync.reload();
   done();
 });
 
 gulp.task("html-watch", ["html"], function (done) {
-  browserSync.reload();
-  done();
-});
-
-gulp.task("img-watch", ["img"], function (done) {
   browserSync.reload();
   done();
 });
@@ -106,7 +101,6 @@ gulp.task("serve", () => {
     }
   });
   gulp.watch(sources.html, ["html-watch"]);
-  gulp.watch(sources.img, ["img-watch"]);
   gulp.watch(sources.rootSass, ["sass-watch"]);
   gulp.watch(sources.rootMaterialize, ["materialize-watch"]);
   gulp.watch(['./src/assets/js/components/*.js', sources.js+'index.js'], ["todo-watch"]);
