@@ -20,7 +20,8 @@ var paths = {
   sass: "scss/**/*.scss",
   mainSass: "scss/main.scss",
   materializeSass: "scss/materialize-sass.scss",
-  componentsFolder: "./src/assets/js/components/"
+  componentsFolder: "./src/assets/js/components/",
+  icons: "icomoon/**/*"
 };
 
 var sources = {
@@ -32,7 +33,8 @@ var sources = {
   js: config.source + paths.js,
   rootSass: config.source + paths.assets + paths.mainSass,
   rootMaterialize: config.source + paths.assets + paths.materializeSass,
-  rootComponents: config.source + paths.assets + paths.components
+  rootComponents: config.source + paths.assets + paths.components,
+  icons: config.source + paths.assets + paths.icons
 };
 
 gulp.task('todo', () => {
@@ -52,6 +54,10 @@ gulp.task('materialize-js', ()=>{
 
 gulp.task('img', ()=>{
   gulp.src(sources.img).pipe(gulp.dest(config.dist + paths.assets + "img"));
+});
+
+gulp.task('icons', ()=>{
+  gulp.src(sources.icons).pipe(gulp.dest(config.dist + paths.assets + "icomoon"));
 });
 
 gulp.task('sass', ()=>{
