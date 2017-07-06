@@ -4,6 +4,9 @@ $medium-gray: #b5b5b5;
 $brand-color: #bd081c;
 $dark-grey: #555555;
 
+body {
+  overflow: auto !important;
+}
 .navbar {
   width: 100%;
   height: 64px;
@@ -231,7 +234,14 @@ $dark-grey: #555555;
   background-color: $main-light-gray;
   opacity: 1 !important;
 }
-
+.modal {
+  position: absolute;
+  /*
+    //position: absolute;
+  max-height: auto;
+  top: 10%;
+  */
+}
 .modal-content {
 
 }
