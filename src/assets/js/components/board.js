@@ -57,9 +57,9 @@ const items=(e)=>{
           pins.fuente.author = pins.selected.metadata.link.site_name;
           pins.fuente.favicon = pins.selected.metadata.link.favicon;
           pins.fuente.link = pins.selected.link;
-          $('.modal-content__author').text('Artículo de ' + pins.fuente.author);
+          $('.modal-content__author').text('Artículo de <strong>' + pins.fuente.author + '</strong>');
           $('.modal-content__favicon').attr('src', pins.fuente.favicon);
-          $('.modal-content__link').text(pins.fuente.link);
+          $('.modal-content__link').attr('href', pins.fuente.link);
         }
           $('#modal1').modal();
 
