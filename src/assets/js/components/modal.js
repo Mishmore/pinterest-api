@@ -54,37 +54,9 @@ const Modal = () => {
   modalContent.append(comentarios);
   modal.append(close);
 
-  const clean = () => {
-    $('.modal-content__img').attr('src', "");
-    $('.modal-content__datos__notes').text("");
-    $('.modal-content__title').text("");
-    $('.modal-content__description').text("");
-    $('.modal-content__author').text("");
-    $('.modal-content__favicon').attr('src', "");
-    $('.modal-content__link').attr('href', "");
-    let pins = {
-      selected: null,
-      id: null,
-      creator: null,
-      title: null,
-      description: null,
-      note: null,
-      fuente: {
-        author: null,
-        favicon: null,
-        link: null
-      }
-    }
-
-  }
-
   close.on('click', (e) => {
     clean();
   });
-
-  $('#materialize-modal-overlay-5').on('click', (e) => {
-    alert('sdfds');
-  })
 
   return modal;
 }
