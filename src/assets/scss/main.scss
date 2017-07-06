@@ -164,4 +164,8 @@ $dark-grey: #555555;
     font-weight: 600;
     margin-right: 3px;
   }
+  &__info {
+    display: flex;
+    justify-content: space-between;
+  }
 }
