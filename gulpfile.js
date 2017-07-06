@@ -13,7 +13,7 @@ var config = {
 
 var paths = {
   assets: "/assets/",
-  img: "assets/img/*",
+  img: "assets/img/*.png",
   js: "assets/js/",
   materializeJs: "assets/scss/js/bin/materialize.min.js",
   html: "**/*.html",
@@ -96,6 +96,8 @@ gulp.task("todo-watch", ["todo"], function (done) {
   browserSync.reload();
   done();
 });
+
+gulp.task('dale', ['html', 'materialize-js', 'img', 'sass', 'materialize']);
 
 gulp.task("serve", () => {
   browserSync.init({
