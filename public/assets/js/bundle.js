@@ -80,29 +80,34 @@ const Header = () => {
 'use strict';
 
 const boardPins=(update)=>{
-    const contenedor  =$('<div></div>');
-    const row         =$('<div class="grid row"></div>');
+    const row =$('<div class="row grid"></div>');
 
     const item=generatorItems(board.boardData,row,update);
     console.log(item);
 
     row.append(item);
-    contenedor.append(row);
 
-    return contenedor;
+    return row;
 }
 
 const items=(e)=>{
 
-    const pin         =$('<div class="col s12 m3"></div>');
-    const div         =$('<div class="radius"></div>');
+    const pin         =$('<div class="col s12 m3 xl3 grid__pin"></div>');
+    const div         =$('<div class="grid__pin-radius"></div>');
     const img         =$('<img class="responsive-img" src="'+e.image.original.url+'">');
-    const description =$('<p>'+e.note+'</p>');
-    const nameBoard   =$('<p>'+e.board.name+'</p>');
-    const overlay     =$('<div class="overlay" data-target="modal1"></div>');
-    const divIcon     =$('<div class="icon-div btn white"></div>');
+    const info        =$('<div class="col s12 padding-14-bot"></div>');
+    const userCont    =$('<div class="col s12"></div>');
+    const user        =$('<div class="col s3 m4 xl4"><img src="'+ profile.image +'" alt="foto arabela" class="circle responsive-img"></div>');
+    const nameBoard   =$('<div class="col s8">'+e.board.name+'<br>'+profile.name+'</div>');
+    const description =$('<div class="note col s8">'+e.note+'</div>');
+    const overlay     =$('<div class="grid__pin-overlay" data-target="modal1"></div>');
+    const divIcon     =$('<div class="button-share btn white"></div>');
     const up          =$('<span class="icon-share"></span>');
-    const btn         =$('<a class="waves-effect waves-light btn boton">Guardar</a>');
+    const btn         =$('<a class="waves-effect waves-light btn button-save button-save--hover">Guardar</a>');
+
+
+    userCont.append(user);
+    userCont.append(nameBoard);
 
     divIcon.append(up);
     overlay.append(divIcon);
@@ -111,12 +116,12 @@ const items=(e)=>{
     pin.append(div);
     if(e.metadata.article!=undefined) {
         const titulo = $('<h6>' + e.metadata.article.name + '</h6>');
-        pin.append(titulo);
+        info.append(titulo);
     }
-
-    pin.append(description);
+    info.append(description);
+    info.append(userCont);
+    pin.append(info);
     pin.append(overlay);
-    pin.append(nameBoard);
 
 //Abrir modal y almacenar data
     overlay.on('click',(event) => {
