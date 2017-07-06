@@ -37,7 +37,7 @@ $( _ => {
           board.boardData = response.data;
             const root = $('.root');
             render(root);
-            console.log('renderizando');
+            console.log(board.boardData);
         });
     })
   });
