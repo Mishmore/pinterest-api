@@ -81,8 +81,8 @@ const Header = () => {
 'use strict';
 
 const boardPins=(update)=>{
-    const contenedor  =$('<div class="grid"></div>');
-    const row         =$('<div class="row"></div>');
+    const contenedor  =$('<div></div>');
+    const row         =$('<div class="grid row"></div>');
 
     const item=generatorItems(board.boardData,row,update);
     console.log(item);
@@ -100,12 +100,11 @@ const items=(e)=>{
     const img         =$('<img class="responsive-img" src="'+e.image.original.url+'">');
     const description =$('<p>'+e.note+'</p>');
     const nameBoard   =$('<p>'+e.board.name+'</p>');
-    const overlay     =$('<div class="overlay"></div>');
+    const overlay     =$('<div class="overlay" data-target="modal1"></div>');
     const divIcon     =$('<div class="icon-div btn white"></div>');
-    const up          =$('<span class="icon-out"></span>');
+    const up          =$('<span class="icon-share"></span>');
     const btn         =$('<a class="waves-effect waves-light btn boton">Guardar</a>');
 
-    //img.css("height",e.image.original.height+"px");
     divIcon.append(up);
     overlay.append(divIcon);
     overlay.append(btn);
