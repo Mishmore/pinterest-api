@@ -50,13 +50,14 @@ const items=(e)=>{
         if(pins.selected.metadata.article!=undefined) {
           pins.title = pins.selected.metadata.article.name;
           pins.description = pins.selected.metadata.article.description;
-          $('#title').text(pins.title);
+          $('.modal-content__title').text(pins.title);
+          $('.modal-content__description').text(pins.description);
         }
         if(pins.selected.metadata.link!=undefined) {
           pins.fuente.author = pins.selected.metadata.link.site_name;
           pins.fuente.favicon = pins.selected.metadata.link.favicon;
           pins.fuente.link = pins.selected.link;
-          $('.modal-content__author').text(pins.fuente.author);
+          $('.modal-content__author').text('Artículo de ' + pins.fuente.author);
           $('.modal-content__favicon').attr('src', pins.fuente.favicon);
           $('.modal-content__link').text(pins.fuente.link);
         }

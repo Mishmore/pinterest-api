@@ -129,13 +129,14 @@ const items=(e)=>{
         if(pins.selected.metadata.article!=undefined) {
           pins.title = pins.selected.metadata.article.name;
           pins.description = pins.selected.metadata.article.description;
-          $('#title').text(pins.title);
+          $('.modal-content__title').text(pins.title);
+          $('.modal-content__description').text(pins.description);
         }
         if(pins.selected.metadata.link!=undefined) {
           pins.fuente.author = pins.selected.metadata.link.site_name;
           pins.fuente.favicon = pins.selected.metadata.link.favicon;
           pins.fuente.link = pins.selected.link;
-          $('.modal-content__author').text(pins.fuente.author);
+          $('.modal-content__author').text('Artículo de ' + pins.fuente.author);
           $('.modal-content__favicon').attr('src', pins.fuente.favicon);
           $('.modal-content__link').text(pins.fuente.link);
         }
@@ -155,7 +156,7 @@ const generatorItems=(data,row,update)=>{
 const Modal = () => {
   const modal = $('<div id="modal1" class="modal">');
   const modalContent = $('<div class="modal-content">');
-  const title = $('<h4 id="title"></h4>');
+  const title = $('<h5 id="title" class="modal-content__title"></h5>');
   const share = $('<a href="" class="modal-content__share modal-content__share--hover icon-share"></a>');
   /*
   const check =
@@ -164,16 +165,16 @@ const Modal = () => {
   const saveBtn = $('<button type="button" name="button" class="modal-content__button modal-content__button--hover btn">Guardar</button>');
   const img = $('<img class="responsive-img modal-content__img" src="'+ pins.image + '">');
   const author = $('<p class="modal-content__author"></p>');
-  const favicon = $('<img class="round modal-content__favicon" src="">');
+  const favicon = $('<img class="modal-content__favicon circle" src="">');
   const link = $('<p class="modal-content__link"></p>');
   const description = $('<p class="modal-content__description"></p>');
-  const close = $('<a href="#!" class="modal-action modal-close btn-flat modal-content__close">close</a>');
+  const close = $('<a href="#!" class="modal-action modal-close modal-content__close icon-close"></a>');
 
   modal.append(modalContent);
-  modalContent.append(title);
   modalContent.append(share);
   modalContent.append(more);
   modalContent.append(saveBtn);
+  modalContent.append(title);
   modalContent.append(img);
   modalContent.append(author);
   modalContent.append(favicon);

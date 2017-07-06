@@ -3,6 +3,7 @@ $main-gray: dimgray;
 $medium-gray: #b5b5b5;
 $brand-color: #bd081c;
 $dark-grey: #555555;
+$modal-grey: #EEEEEE;
 
 body {
   overflow: auto !important;
@@ -231,17 +232,55 @@ body {
 }
 
 .modal-overlay {
-  background-color: $main-light-gray;
+  background-color: $modal-grey;
   opacity: 1 !important;
 }
 .modal {
   position: absolute;
-  /*
-    //position: absolute;
-  max-height: auto;
-  top: 10%;
-  */
+  max-height: none;
+  overflow: visible;
+  box-shadow: none;
+  border-radius: 8px !important;
+  width: 628px;
 }
 .modal-content {
+  border-radius: 8px !important;
+  background-color: #ffffff;
+  &__close {
+    color: $medium-gray;
+    font-size: 20px;
+    position: absolute;
+    top: -25px;
+    right: -40px;
+  }
+  &__more {
+    @extend .navbar__messages;
+    background-image: url('../img/more.png');
+  }
+  &__share {
+    @extend .navbar__bottom__share;
+  }
+  &__share--hover:hover {
+    background-color: $main-light-gray;
+  }
+  &__button {
+    @extend .navbar__bottom__button;
+  }
+  &__button--hover:hover {
+    background-color: darken($brand-color, 3%) !important;
+    box-shadow: none;
+  }
+  &__title {
+    font-weight: 600;
+    color: $dark-grey;
+  }
+  &__img {
+    display: block;
+    margin: 0 auto;
+  }
+  &__favicon {
+    width: 50px;
+    height: 50px;
+  }
 
 }
