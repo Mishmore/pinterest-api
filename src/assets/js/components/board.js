@@ -44,7 +44,8 @@ const items=(e)=>{
         event.preventDefault();
         pins.selected = e;
         console.log(pins);
-        pins.image = pins.selected.image.original.url
+        pins.image = pins.selected.image.original.url;
+        $('.modal-content__img').attr('src', pins.image);
 
         if(pins.selected.metadata.article!=undefined) {
           pins.title = pins.selected.metadata.article.name;
