@@ -13,10 +13,17 @@ const Modal = () => {
   const img = $('<img class="responsive-img modal-content__img" src="'+ pins.image + '">');
   const bottomImg = $('<div class="modal-content__bottom"></div>');
   const autoria = $('<div class="modal-content__autoria"></div>');
-  const author = $('<p class="modal-content__author"></p>');
+  const author = $('<p>Artículo de </p><br><p class="modal-content__author strong"</p>');
   const favicon = $('<img class="modal-content__favicon circle" src="">');
-  const link = $('<a class="modal-content__link">leer</a>');
+  const link = $('<a class="modal-content__link">Leerlo</a>');
   const description = $('<p class="modal-content__description"></p>');
+  const datos = $('<div class="modal-content__datos"></div>');
+  const user = $('<img src="'+ profile.image +'" alt="foto arabela" class="circle modal-content__datos__profile">');
+  const div = $('<div class="modal-content__datos__div"></div>');
+  const username = $('<span class="modal-content__datos__nombre strong">'+ profile.name +'</span>');
+  const guardado = $('<span> lo ha guardado en </span>');
+  const boardName =$('<span class="modal-content__datos__board strong">'+ profile.board_name +'</span>');
+  const notes = $('<p class="modal-content__datos__notes"></p>');
   const close = $('<a href="#!" class="modal-action modal-close modal-content__close icon-close"></a>');
 
   modal.append(modalContent);
@@ -29,14 +36,20 @@ const Modal = () => {
   modalContent.append(img);
   modalContent.append(bottomImg);
   bottomImg.append(autoria);
-  autoria.append(author);
   autoria.append(favicon);
+  autoria.append(author);
   bottomImg.append(link);
   modalContent.append(description);
+  modalContent.append(datos);
+  datos.append(user);
+  datos.append(div);
+  div.append(username);
+  div.append(guardado);
+  div.append(boardName);
+  div.append(notes);
   modal.append(close);
 
   close.on('click', (e) => {
-
   })
 
   return modal;

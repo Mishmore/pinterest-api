@@ -47,6 +47,9 @@ const items=(e)=>{
         pins.image = pins.selected.image.original.url;
         $('.modal-content__img').attr('src', pins.image);
 
+        pins.note = pins.selected.note;
+        $('.modal-content__datos__notes').text(pins.note);
+
         if(pins.selected.metadata.article!=undefined) {
           pins.title = pins.selected.metadata.article.name;
           pins.description = pins.selected.metadata.article.description;
@@ -57,7 +60,7 @@ const items=(e)=>{
           pins.fuente.author = pins.selected.metadata.link.site_name;
           pins.fuente.favicon = pins.selected.metadata.link.favicon;
           pins.fuente.link = pins.selected.link;
-          $('.modal-content__author').text('Artículo de <strong>' + pins.fuente.author + '</strong>');
+          $('.modal-content__author').text(pins.fuente.author);
           $('.modal-content__favicon').attr('src', pins.fuente.favicon);
           $('.modal-content__link').attr('href', pins.fuente.link);
         }

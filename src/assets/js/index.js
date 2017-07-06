@@ -26,6 +26,7 @@ const pins = {
     creator: null,
     title: null,
     description: null,
+    note: null,
     fuente: {
         author: null,
         favicon: null,
