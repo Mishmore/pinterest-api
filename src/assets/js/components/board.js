@@ -43,22 +43,21 @@ const items=(e)=>{
     overlay.on('click',(event) => {
         event.preventDefault();
         pins.selected = e;
-        console.log(pins.selected);
-        pins.id = e.id;
+        console.log(pins);
+        pins.image = pins.selected.image.original.url
 
-        $.get('https://api.pinterest.com/v1/pins/'+ pins.id +'/?access_token=AZfXkRQCZFONB6C_L-FTMYOrNkI0FM6hzadQ7gVEIt-RlsA7PgAAAAA&fields=id%2Clink%2Cnote%2Curl%2Cattribution%2Cmedia%2Cmetadata%2Cboard%2Ccolor%2Ccounts%2Coriginal_link%2Ccreated_at%2Ccreator%2Cimage')
-        .done(function(response) {
-          pins.pin = response.data;
-          pins.creator = pins.pin.creator.first_name;
-          pins.title = pins.pin.metadata.article.name;
-          pins.description = pins.pin.metadata.article.description;
-          pins.fuente.author = pins.pin.metadata.link.site_name;
-          pins.fuente.favicon = pins.pin.metadata.link.favicon;
-          pins.fuente.link = pins.pin.link;
-
+        if(pins.selected.metadata.article!=undefined) {
+          pins.title = pins.selected.metadata.article.name;
+          pins.description = pins.selected.metadata.article.description;
           $('#title').text(pins.title);
+        }
+        if(pins.selected.metadata.link!=undefined) {
+          pins.fuente.author = pins.selected.metadata.link.site_name;
+          pins.fuente.favicon = pins.selected.metadata.link.favicon;
+          pins.fuente.link = pins.selected.link;
+        }
           $('#modal1').modal();
-        });
+
 });
     return pin;
 }

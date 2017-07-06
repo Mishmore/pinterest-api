@@ -22,7 +22,6 @@ const profile = {
 
 const pins = {
     selected: null,
-    pin: null,
     id: null,
     creator: null,
     title: null,
