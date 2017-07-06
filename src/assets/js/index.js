@@ -19,6 +19,19 @@ const profile = {
   pins: null,
   followers: null
 }
+
+const pins = {
+    pin: null,
+    id: null,
+    creator: null,
+    description: null,
+    fuente: {
+        author: null,
+        favicon: null,
+        link: null
+    }
+}
+
 $( _ => {
   $.get('https://api.pinterest.com/v1/users/arabelyuska/?access_token=AdYPEVg00YQcQqsem5eglmzv-LRYFM6ZHmEFGwZEIt-RlsA7PgAAAAA&fields=first_name%2Cid%2Clast_name%2Curl%2Cbio%2Cusername%2Caccount_type%2Ccounts%2Ccreated_at%2Cimage')
   .done(function(response) {
