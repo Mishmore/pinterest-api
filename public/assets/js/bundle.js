@@ -43,7 +43,6 @@ const Navbar = (update) => {
 
   $(window).scroll(function(e) {
     const currScroll = $(window).scrollTop();
-    console.log(currScroll);
     if (currScroll > lastScroll && currScroll > 80) {
       title.css('top', '10px');
     }
