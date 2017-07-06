@@ -1,36 +1,65 @@
 'use strict';
 
-const Board=(update)=>{
+const boardPins=(update)=>{
+    const contenedor  =$('<div></div>');
+    const row         =$('<div class="row"></div>');
 
-    const contenedor=$('<div class="container"></div>');
-    const row       =$('<div class="row"></div>');
-    const pin       =$('<div class="col m4"></div>');
-    const overlay   =$('<div class="overlay"></div>');
-    const divIcon   =$('<div class="icon-div btn white"></div>');
-    const up        =$('<span class="icon-out"></span>')
-    const btn       =$('<a class="waves-effect waves-light btn boton">Guardar</a>');
+    const item=generatorItems(board.boardData,row,update);
+    console.log(item);
 
-    divIcon.append(up);
-    overlay.append(divIcon);
-    overlay.append(btn);
-    pin.append(overlay);
-    row.append(pin);
+    row.append(item);
     contenedor.append(row);
 
     return contenedor;
 }
+
+const items=(e)=>{
+
+    const pin         =$('<div class="col s12 m3"></div>');
+    const div         =$('<div class="radius"></div>');
+    const img         =$('<img class="responsive-img" src="'+e.image.original.url+'">');
+    const description =$('<p>'+e.note+'</p>');
+    const nameBoard   =$('<p>'+e.board.name+'</p>');
+    const overlay     =$('<div class="overlay"></div>');
+    const divIcon     =$('<div class="icon-div btn white"></div>');
+    const up          =$('<span class="icon-out"></span>');
+    const btn         =$('<a class="waves-effect waves-light btn boton">Guardar</a>');
+
+    //img.css("height",e.image.original.height+"px");
+    divIcon.append(up);
+    overlay.append(divIcon);
+    overlay.append(btn);
+    div.append(img);
+    pin.append(div);
+    if(e.metadata.article!=undefined) {
+        const titulo = $('<h6>' + e.metadata.article.name + '</h6>');
+        pin.append(titulo);
+    }
+    pin.append(description);
+    pin.append(overlay);
+    pin.append(nameBoard);
+
+    return pin;
+}
+
+const generatorItems=(data,row,update)=>{
+
+    data.forEach((e)=>{
+        row.append(items(e));
+    })
+}
+
 'use strict';
 const render = (root) => {
   root.empty();
   const wrapper = $('<div class="wrapper"></div>');
   wrapper.append(Navbar(_ => render(root)));
-  wrapper.append(Board(_ => render(root)));
+  wrapper.append(boardPins(_ => render(root)));
   root.append(wrapper);
 }
 
-const hola = 'ada';
 const board = {
-  boardData: null,
+  boardData: null
 }
 
 $( _ => {
@@ -49,18 +78,10 @@ $( _ => {
   $.get( "https://api.pinterest.com/v1/boards/arabelyuska/web-ui/pins/?access_token=AYneH0AVANBioiyRpgDkY8hLv8LpFM4lRp9RIINEIt-RlsA7PgAAAAA&fields=id%2Clink%2Cimage%2Cattribution%2Cboard%2Ccolor%2Ccounts%2Ccreated_at%2Cmedia%2Cmetadata%2Cnote%2Coriginal_link%2Curl")
   .done(function( response ) {
     board.boardData = response.data;
-    console.log(board.boardData);
-
-    board.boardData.forEach(function(e) {
-      if (e.attribution != null) {
-        console.log(e.attribution.author_name);
-      }
-    })
+      const root = $('.root');
+      render(root);
+      console.log('renderizando');
   });
-
-  const root = $('.root');
-  render(root);
-  console.log('renderizando');
 });
 
 'use strict';
